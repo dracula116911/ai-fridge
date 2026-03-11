@@ -1,0 +1,9 @@
+/* src/index.css */
+@import "tailwindcss";
+
+/* This is the V4 way to enable the manual 'class' strategy */
+@custom-variant dark (&:where(.dark, .dark *));
+
+body {
+  @apply transition-colors duration-500 bg-slate-50 text-slate-900;
+}
