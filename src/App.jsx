@@ -4,6 +4,7 @@ import ThemeToggle from "./components/ThemeToggle";
 import IngredientInput from "./components/IngredientInput";
 import RecipeCard from "./components/RecipeCard";
 import Loader from "./components/Loader";
+import { generateRecipe } from "./utils/gemini";
 
 
 const App = () => {
@@ -12,26 +13,42 @@ const App = () => {
   const [loading, setloading] = useState(false);
   const [recipe, setRecipe] = useState(null);
 
-  const handleGenerate = () => {
-    setloading(true);
-    setRecipe("");
+  const handleGenerate = async () => {
+    // setloading(true);
+    // setRecipe("");
 
-    setTimeout(() => {
-      setRecipe({
-        title: "Garlic Butter Pasta",
-        ingredients: ["200g Pasta", "4 cloves Garlic", "Butter", "Parmesan"],
-        instructions: [
-          "Boil pasta",
-          "Sauté garlic in butter",
-          "Mix and top with cheese",
-        ],
-        time: "15 min",
-        calories: "400 kcal",
-      });
-      setloading(false);
+    // setTimeout(() => {
+    //   setRecipe({
+    //     title: "Garlic Butter Pasta",
+    //     ingredients: ["200g Pasta", "4 cloves Garlic", "Butter", "Parmesan"],
+    //     instructions: [
+    //       "Boil pasta",
+    //       "Sauté garlic in butter",
+    //       "Mix and top with cheese",
+    //     ],
+    //     time: "15 min",
+    //     calories: "400 kcal",
+    //   });
+    //   setloading(false);
 
-    } , 2000);
+    // } , 2000);
+
+    if(ingredients.length === 0) return;
+      setloading(true);
+      setRecipe(null);
+
+      try{
+        const data = await generateRecipe(ingredients);
+        setRecipe(data);
+      }catch(error){
+        alert("The AI is a bit full right now. try a bit later : " , error.message)
+      }finally {
+        setloading(false);
+      }
+    
   };
+
+  
 
 
   return (

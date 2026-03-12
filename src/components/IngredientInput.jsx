@@ -45,6 +45,7 @@ const IngredientInput = ({ ingredients, setIngredients }) => {
       <div className="flex flex-wrap gap-3 justify-center">
         {ingredients.map((item, index) => (
           <div
+            key={index}
             id={index}
             className="flex items-center gap-2 px-4 py-2 bg-white/70 dark:bg-slate-800/70 backdrop-blur-md border border-slate-200 dark:border-slate-700 rounded-full text-sm font-medium shadow-sm group animate-in zoom-in duration-200"
           >
