@@ -14,8 +14,7 @@ const App = () => {
   const [loading, setloading] = useState(false);
   const [recipe, setRecipe] = useState(null);
 
-  const {favourites , toggleFavourites , removeFavourites} = useFavourites();
-  
+  const { favourites, toggleFavourites, removeFavourites } = useFavourites();
 
   const handleGenerate = async () => {
     // setloading(true);
@@ -85,7 +84,7 @@ const App = () => {
             )}
           </div>
 
-          <div className="w-full flex justify-center">
+          <div className="w-full flex justify-center min-h-[400]">
             {loading && <Loader />}
             {recipe && !loading && (
               <RecipeCard
@@ -94,10 +93,38 @@ const App = () => {
                 isFavourite={favourites.some((f) => f.title === recipe.title)}
               />
             )}
+
+            {!recipe && !loading && (
+              <div className="flex flex-col items-center justify-center text-slate-700 dark:text-slate-400 opacity-50">
+                <div className="relative">
+                  <div className="absolute -top-4 -right-4 animate-bounce">
+                    ✨
+                  </div>
+                  <svg
+                    width="120"
+                    height="120"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2" />
+                    <path d="M7 2v20" />
+                    <path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7" />
+                  </svg>
+                </div>
+                <p className="mt-4 font-medium italic">Add Ingredients to start cooking....</p>
+              </div>
+            )}
           </div>
 
-            <FavouritesList favourites={favourites} onSelect={setRecipe} onRemove={removeFavourites} />
-         
+          <FavouritesList
+            favourites={favourites}
+            onSelect={setRecipe}
+            onRemove={removeFavourites}
+          />
         </main>
       </div>
     </ThemeProvider>
