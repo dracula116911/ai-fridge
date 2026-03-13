@@ -26,7 +26,7 @@ const IngredientInput = ({ ingredients, setIngredients }) => {
     <div className="w-full space-y-6">
       <div className="relative group max-w-md mx-auto">
         <input
-          className="w-full px-6 py-4 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 outline-none transition-all shadow-xl dark:shadow-none text-lg"
+          className="w-full px-6 py-4 rounded-2xl placeholder-slate-600 dark:placeholder-slate-400 border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 outline-none transition-all shadow-xl dark:shadow-none text-lg"
           type="text"
           value={inputValue}
           onKeyDown={handleKewDown}

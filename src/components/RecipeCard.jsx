@@ -1,15 +1,15 @@
 import React from "react";
 import { Clock, Users, Flame, Heart } from "lucide-react";
 
-const RecipeCard = ({ recipe }) => {
+const RecipeCard = ({ recipe, onFavourite , isFavourite }) => {
   if (!recipe) return null;
   return (
     <div className="w-full max-w-2xl mt-12 p-8 rounded-3xl bg-white/40 dark:bg-slate-900/40 backdrop-blur-2xl border border-white/20 dark:border-slate-800 shadow-2xl animate-in fade-in slide-in-from-bottom-8 duration-700">
       <div className="flex justify-between items-start mb-6">
         <h3 className="text-3xl font-bold tracking-tight">{recipe.title}</h3>
-        <button className="p-2 rounded-full bg-white dark:bg-slate-800 shadow-md hover:scale-110 transition-transform">
+        <button onClick={onFavourite} className="p-2 rounded-full bg-white dark:bg-slate-800 shadow-md hover:scale-110 transition-transform">
           <Heart
-            className="text-slate-400 hover:text-red-500 transition-colors"
+            className={isFavourite ? "fill-red-500 text-red-500" : "text-slate-400"}
             size={20}
           />
         </button>
