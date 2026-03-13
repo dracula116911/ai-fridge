@@ -84,7 +84,7 @@ const App = () => {
             )}
           </div>
 
-          <div className="w-full flex justify-center min-h-[400]">
+          <div className="w-full flex justify-center">
             {loading && <Loader />}
             {recipe && !loading && (
               <RecipeCard
